@@ -1,0 +1,16 @@
+services:
+  squid:
+    # image: docker.io/salrashid123/squidproxy
+    platform: linux/amd64
+    build:
+      context: .
+    # command: /apps/squid/sbin/squid -f /apps/squid.conf -NYCd 1
+    entrypoint: /apps/entrypoint.sh
+    ports:
+      - "3128:3128"
+    environment:
+      - P001_USER=moclojer
+      - P001_PASS=avelino
+    volumes:
+      - ./squid.conf:/apps/squid.conf
+      - ./htpasswd:/apps/htpasswd
