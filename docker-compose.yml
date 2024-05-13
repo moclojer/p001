@@ -11,6 +11,7 @@ services:
     environment:
       - P001_USER=moclojer
       - P001_PASS=avelino
+      - P001_PORT=3128
     volumes:
-      - ./squid.conf:/apps/squid.conf
+      - ./squid.conf:/apps/squid.conf.template
       - ./htpasswd:/apps/htpasswd
