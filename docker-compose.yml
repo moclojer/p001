@@ -1,7 +1,7 @@
+version: "3"
 services:
   squid:
-    # image: docker.io/salrashid123/squidproxy
-    platform: linux/amd64
+    # platform: linux/amd64
     build:
       context: .
     # command: /apps/squid/sbin/squid -f /apps/squid.conf -NYCd 1
