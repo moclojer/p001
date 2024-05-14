@@ -13,5 +13,5 @@ services:
       - P001_PASS="moclojer:${P001_PASS}"
       - P001_PORT="3128:${P001_POST}"
     volumes:
-      - ./squid.conf:/apps/squid.conf.template
+      - ./squid.conf:/apps/squid.conf
       - ./htpasswd:/apps/htpasswd

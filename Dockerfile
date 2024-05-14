@@ -1,7 +1,5 @@
-FROM debian:latest AS build
-
-ADD . /apps/
-WORKDIR /apps
+FROM debian:latest
+LABEL maintainer="moclojer.com"
 
 RUN apt -y update && \
     apt install -y \
@@ -10,10 +8,19 @@ RUN apt -y update && \
     vim curl git python3 python3-pip \
     squidclient procps apache2-utils
 
+ADD . /apps/
+WORKDIR /apps
+
 RUN wget -O - https://www.squid-cache.org/Versions/v6/squid-6.9.tar.gz | tar zxfv - && \
     if [ $(( `nproc --all`-1 )) -eq 0 ]; then CPU=1; else CPU=$(( `nproc --all`-1 )); fi && \
-    cd /apps/squid-6.9/ && \
-    ./configure --prefix=/apps/squid --enable-icap-client --enable-ssl --with-openssl --enable-ssl-crtd --enable-auth --enable-basic-auth-helpers="NCSA" && \
+    cd /apps/squid-6.9 && \
+    ./configure --prefix=/apps/squid \
+        --enable-icap-client \
+        --enable-ssl \
+        --with-openssl \
+        --enable-ssl-crtd \
+        --enable-auth \
+        --enable-basic-auth-helpers="NCSA" && \
     make -j$CPU && make install && \
     cd /apps && rm -rf /apps/squid-6.9
 
