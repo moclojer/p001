@@ -11,7 +11,7 @@ RUN apt -y update && \
     squidclient procps apache2-utils
 
 RUN wget -O - https://www.squid-cache.org/Versions/v6/squid-6.9.tar.gz | tar zxfv - && \
-    CPU=$(( `nproc --all`-1 )) && \
+    if [ $(( `nproc --all`-1 )) -eq 0 ]; then CPU=1; else CPU=$(( `nproc --all`-1 )); fi && \
     cd /apps/squid-6.9/ && \
     ./configure --prefix=/apps/squid --enable-icap-client --enable-ssl --with-openssl --enable-ssl-crtd --enable-auth --enable-basic-auth-helpers="NCSA" && \
     make -j$CPU && make install && \
