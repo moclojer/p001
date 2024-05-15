@@ -1,9 +1,9 @@
-# p001 - HPPT PROXY
+# p001 - HPPT proxy server in docker
 
 Easy docker image to run a simple http proxy server with basic auth (squid).
 
 * **docker image:** `ghcr.io/moclojer/p001:latest`
-* **port:** `3128` *we do not support changing the port yet*
+* **port:** `3128`, if you want to set a different port you must declare the environment variable `P001_PORT` *(it will proxy in docker)*
 * **user/pass?** if you want to use a proxy with username and password (which we recommend), you need to set the environment variables `P001_USER` and `P001_USER`
 
 ## docker compose example
@@ -14,15 +14,13 @@ Easy docker image to run a simple http proxy server with basic auth (squid).
 version: "3"
 services:
   squid:
+    # platform: linux/amd64
     image: ghcr.io/moclojer/p001:latest
-    entrypoint: /apps/entrypoint.sh
+    # command: /apps/squid/sbin/squid -f /apps/squid.conf -NYCd 1
+    # entrypoint: /etc/squid/entrypoint.sh
     ports:
-      - "3128:3128"
+      - "${P001_PORT:-3128}:3128"
     environment:
-      - P001_USER=moclojer
-      - P001_PASS=moclojer
-      - P001_PORT=3128
-    volumes:
-      - ./squid.conf:/apps/squid.conf
-      - ./htpasswd:/apps/htpasswd
+      - P001_USER=${P001_USER}
+      - P001_PASS=${P001_PASS}
 ```
