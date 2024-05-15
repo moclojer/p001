@@ -5,12 +5,9 @@ services:
     build:
       context: .
     # command: /apps/squid/sbin/squid -f /apps/squid.conf -NYCd 1
-    entrypoint: /apps/entrypoint.sh
+    # entrypoint: /etc/squid/entrypoint.sh
     ports:
       - "${P001_PORT:-3128}:3128"
     environment:
       - P001_USER=${P001_USER}
       - P001_PASS=${P001_PASS}
-    volumes:
-      - ./squid.conf:/apps/squid.conf
-      - ./htpasswd:/apps/htpasswd
