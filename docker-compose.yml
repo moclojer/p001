@@ -9,9 +9,9 @@ services:
     ports:
       - "3128:3128"
     environment:
-      - P001_USER="moclojer:${P001_USER}"
-      - P001_PASS="moclojer:${P001_PASS}"
-      - P001_PORT="3128:${P001_POST}"
+      - P001_USER=${P001_USER}
+      - P001_PASS=${P001_PASS}
+      - P001_PORT=${P001_PORT:-3128}
     volumes:
       - ./squid.conf:/apps/squid.conf
       - ./htpasswd:/apps/htpasswd
