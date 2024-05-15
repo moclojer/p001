@@ -1,4 +1,4 @@
 #!/bin/bash
 
-htpasswd -b -c /apps/squid/htpasswd $P001_USER $P001_PASS
-/apps/squid/sbin/squid -f /apps/squid.conf -NYCd 1
+htpasswd -c -B -b /etc/squid/htpasswd $P001_USER $P001_PASS
+squid -f /etc/squid/squid.conf -NYCd 1
