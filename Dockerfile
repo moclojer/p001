@@ -2,9 +2,11 @@ FROM ubuntu/squid:latest
 LABEL maintainer="moclojer.com"
 LABEL org.opencontainers.image.source https://github.com/moclojer/p001
 
+ENV P001_USER "foobar"
+ENV P001_PASS "foobar"
+
 ADD squid.conf /etc/squid/squid.conf
 ADD entrypoint.sh /src/entrypoint.sh
-ADD .env /src/.env
 
 RUN apt -y update && apt install -y apache2-utils
 
