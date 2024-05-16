@@ -8,3 +8,5 @@ services:
     environment:
       - P001_USER=$P001_USER
       - P001_PASS=$P001_PASS
+    volumes:
+      - .env:/src/.env
