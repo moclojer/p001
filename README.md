@@ -14,13 +14,12 @@ Easy docker image to run a simple http proxy server with basic auth (squid).
 version: "3"
 services:
   squid:
-    # platform: linux/amd64
     image: ghcr.io/moclojer/p001:latest
-    # command: /apps/squid/sbin/squid -f /apps/squid.conf -NYCd 1
-    # entrypoint: /etc/squid/entrypoint.sh
     ports:
-      - "${P001_PORT:-3128}:3128"
+      - ${P001_PORT:-3128}
     environment:
-      - P001_USER=${P001_USER}
-      - P001_PASS=${P001_PASS}
+      - P001_USER=$P001_USER
+      - P001_PASS=$P001_PASS
+    volumes:
+      - .env:/src/.env
 ```
