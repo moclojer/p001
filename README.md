@@ -16,7 +16,7 @@ services:
   squid:
     image: ghcr.io/moclojer/p001:latest
     ports:
-      - ${P001_PORT:-3128}
+      - ${P001_PORT:-3128}:3128
     environment:
       - P001_USER=$P001_USER
       - P001_PASS=$P001_PASS
