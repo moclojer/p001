@@ -3,8 +3,8 @@
 Easy docker image to run a simple http proxy server with basic auth (squid).
 
 * **docker image:** `ghcr.io/moclojer/p001:latest`
-* **port:** `3128`, if you want to set a different port you must declare the environment variable `P001_PORT` *(it will proxy in docker)*
-* **user/pass?** if you want to use a proxy with username and password (which we recommend), you need to set the environment variables `P001_USER` and `P001_USER`
+* **port:** `3128` *default*, if you want to set a different port you must declare the environment variable `P001_PORT` *(it will proxy in docker)*
+* **user/pass?** `moclojer` *default*, if you want to use a proxy with username and password (which we recommend), you need to set the environment variables `P001_USER` and `P001_USER`
 
 ## docker compose example
 
