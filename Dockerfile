@@ -2,8 +2,8 @@ FROM ubuntu/squid:latest
 LABEL maintainer="moclojer.com"
 LABEL org.opencontainers.image.source https://github.com/moclojer/p001
 
-ENV P001_USER "foobar"
-ENV P001_PASS "foobar"
+ENV P001_USER "moclojer"
+ENV P001_PASS "moclojer"
 
 ADD squid.conf /etc/squid/squid.conf
 ADD entrypoint.sh /src/entrypoint.sh
